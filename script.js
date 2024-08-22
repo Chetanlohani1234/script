@@ -21,7 +21,7 @@
 
 (function() {
   // Define the IP address and port where the chatbot API is live
-  const apiUrl = 'http://103.61.103.107:11434'; // Replace with your actual IP address and port
+  //const apiUrl = 'http://103.61.103.107:11434'; // Replace with your actual IP address and port
 
   // Define a unique key for validation
   const validKey = '11434'; // Replace with your unique key
@@ -43,7 +43,8 @@
 
   // Create an iframe to load the chatbot
   const iframe = document.createElement('iframe');
-  iframe.src = `${apiUrl}`; // Use the IP address to load the chatbot
+  //iframe.src = `${apiUrl}`; // Use the IP address to load the chatbot
+  iframe.src = 'https://realchatbot-mauve.vercel.app/';
   iframe.width = '500px';
   iframe.height = '800px';
   iframe.style.border = 'none';
