@@ -27,7 +27,8 @@
   const urlParams = new URLSearchParams(window.location.search);
   const keyParam = urlParams.get('key');
 
-  // Debugging: Log the key parameter
+  // Debugging: Log the entire URL and the key parameter
+  console.log('Full URL:', window.location.href);
   console.log('Retrieved key parameter:', keyParam);
 
   // Validate the key
