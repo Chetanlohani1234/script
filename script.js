@@ -23,12 +23,15 @@
   // Define a unique key for validation
   const validKey = '11434'; // Replace with your unique key
 
+  // Debugging: Log the URL and search parameters
+  console.log('Full URL:', window.location.href);
+  console.log('URL Search Params:', window.location.search);
+
   // Get the query parameter from the URL
   const urlParams = new URLSearchParams(window.location.search);
   const keyParam = urlParams.get('key');
 
-  // Debugging: Log the entire URL and the key parameter
-  console.log('Full URL:', window.location.href);
+  // Debugging: Log the retrieved key parameter
   console.log('Retrieved key parameter:', keyParam);
 
   // Validate the key
@@ -60,4 +63,3 @@
     document.body.removeChild(chatbotContainer);
   });
 })();
-
