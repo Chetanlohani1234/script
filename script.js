@@ -20,15 +20,15 @@
 // })();
 
 (function() {
-  // Define the IP address and port where the chatbot API is live
-  //const apiUrl = 'http://103.61.103.107:11434'; // Replace with your actual IP address and port
-
   // Define a unique key for validation
   const validKey = '11434'; // Replace with your unique key
 
   // Get the query parameter from the URL
   const urlParams = new URLSearchParams(window.location.search);
   const keyParam = urlParams.get('key');
+
+  // Debugging: Log the key parameter
+  console.log('Retrieved key parameter:', keyParam);
 
   // Validate the key
   if (keyParam !== validKey) {
@@ -43,7 +43,6 @@
 
   // Create an iframe to load the chatbot
   const iframe = document.createElement('iframe');
-  //iframe.src = `${apiUrl}`; // Use the IP address to load the chatbot
   iframe.src = 'https://realchatbot-mauve.vercel.app/';
   iframe.width = '500px';
   iframe.height = '800px';
@@ -52,7 +51,6 @@
   iframe.style.bottom = '20px';
   iframe.style.right = '20px';
   iframe.style.borderRadius = '20px';
-  // iframe.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.3)';
 
   chatbotContainer.appendChild(iframe);
 
@@ -61,4 +59,3 @@
     document.body.removeChild(chatbotContainer);
   });
 })();
-
