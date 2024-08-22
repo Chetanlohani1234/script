@@ -20,46 +20,45 @@
 // })();
 
 (function() {
-  // Define a unique key for validation
+  // Define the valid key for validation
   const validKey = '11434'; // Replace with your unique key
 
-  // Debugging: Log the URL and search parameters
-  console.log('Full URL:', window.location.href);
-  console.log('URL Search Params:', window.location.search);
+  // Function to get the key parameter from the script URL
+  const getKeyFromScriptURL = () => {
+    const script = document.currentScript; // Get the current script element
+    const url = new URL(script.src);
+    return url.searchParams.get('key'); // Retrieve the key parameter
+  };
 
-  // Get the query parameter from the URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const keyParam = urlParams.get('key');
+  // Get the key from the script URL
+  const keyParam = getKeyFromScriptURL();
 
-  // Debugging: Log the retrieved key parameter
-  console.log('Retrieved key parameter:', keyParam);
+  // Check if the key is valid
+  if (keyParam === validKey) {
+    // Create a container for the chatbot
+    const chatbotContainer = document.createElement('div');
+    chatbotContainer.id = 'chatbot-container';
+    document.body.appendChild(chatbotContainer);
 
-  // Validate the key
-  if (keyParam !== validKey) {
-      console.error('Invalid key. Access to the chatbot is not authorized.');
-      return;
+    // Create an iframe to load the chatbot
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://realchatbot-mauve.vercel.app/'; // URL of the chatbot
+    iframe.width = '500px';
+    iframe.height = '800px';
+    iframe.style.border = 'none';
+    iframe.style.position = 'fixed';
+    iframe.style.bottom = '20px';
+    iframe.style.right = '20px';
+    iframe.style.borderRadius = '20px';
+
+    chatbotContainer.appendChild(iframe);
+
+    // Optional: Cleanup to remove the chatbot when the component is unmounted
+    window.addEventListener('unload', () => {
+      document.body.removeChild(chatbotContainer);
+    });
+  } else {
+    console.error('Invalid key. Access to the chatbot is not authorized.');
   }
-
-  // Create a container for the chatbot
-  const chatbotContainer = document.createElement('div');
-  chatbotContainer.id = 'chatbot-container';
-  document.body.appendChild(chatbotContainer);
-
-  // Create an iframe to load the chatbot
-  const iframe = document.createElement('iframe');
-  iframe.src = 'https://realchatbot-mauve.vercel.app/';
-  iframe.width = '500px';
-  iframe.height = '800px';
-  iframe.style.border = 'none';
-  iframe.style.position = 'fixed';
-  iframe.style.bottom = '20px';
-  iframe.style.right = '20px';
-  iframe.style.borderRadius = '20px';
-
-  chatbotContainer.appendChild(iframe);
-
-  // Cleanup to remove the chatbot when the component is unmounted
-  window.addEventListener('unload', () => {
-    document.body.removeChild(chatbotContainer);
-  });
 })();
+
