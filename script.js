@@ -22,7 +22,7 @@
 
     // Create an iframe to load the chatbot
     const iframe = document.createElement('iframe');
-    iframe.src = 'http://polymatric.com:8000/; // URL of the chatbot
+    iframe.src = 'https://realchatbot-mauve.vercel.app/'; // URL of the chatbot
     iframe.width = '500px';
     iframe.height = '800px';
     iframe.style.border = 'none';
